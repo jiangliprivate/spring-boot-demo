@@ -3,6 +3,7 @@ package com.xkcoding.helloworld;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yangkai.shen
  * @date Created in 2018-09-28 14:49
  */
+@Import({TomcatConfig.class})
 @SpringBootApplication
 @RestController
-public class SpringBootDemoHelloworldApplication {
+public class HelloworldApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootDemoHelloworldApplication.class, args);
+        SpringApplication.run(HelloworldApplication.class, args);
     }
 
     /**

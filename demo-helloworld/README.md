@@ -109,3 +109,5 @@ server:
     context-path: /demo
 ```
 
+### visit like this http://localhost:8080/demo/hello
+
