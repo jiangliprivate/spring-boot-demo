@@ -13,6 +13,8 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author yangkai.shen
  * @date Created in 2018-09-30 23:16
  */
+//Slf4j 在代码运行前插入了类似这样一句代码
+//private static final Logger log = LoggerFactory.getLogger(SpringBootDemoLogbackApplication.class);
 @SpringBootApplication
 @Slf4j
 public class SpringBootDemoLogbackApplication {

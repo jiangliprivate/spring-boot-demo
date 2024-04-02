@@ -1,6 +1,7 @@
 # spring-boot-demo-actuator
 
 > 本 demo 主要演示了如何在 Spring Boot 中通过 actuator 检查项目运行情况
+> curl -X "POST" http://localhost:8090/sys/actuator/shutdown
 
 ## pom.xml
 
