@@ -8,6 +8,11 @@
   <!-- context 是逆向工程的主要配置信息 -->
   <!-- id：name -->
   <!-- targetRuntime：设置生成的文件适用于那个 mybatis 版本 -->
+
+  <!-- 配置文件路径 -->
+  <properties resource="custom-application.properties"/>
+  <!--数据库驱动包路径 -->
+  <classPathEntry location="${mybatis.jdbc.jar}"/>
   <context id="default" targetRuntime="MyBatis3">
 
     <!-- 生成的 Java 文件的编码 -->
@@ -20,11 +25,17 @@
     </commentGenerator>
 
     <!--jdbc的数据库连接 -->
-    <jdbcConnection
+    <!--<jdbcConnection
       driverClass="com.mysql.cj.jdbc.Driver"
-      connectionURL="jdbc:mysql://127.0.0.1:3306/spring_boot_demo?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=GMT%2B8"
+      connectionURL="jdbc:mysql://127.0.0.1:3306/spring_boot_demo?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=Asia/Shanghai&amp;nullCatalogMeansCurrent=true"
       userId="root"
-      password="123456" >
+      password="123456">
+    </jdbcConnection>-->
+    <!--数据库连接信息 -->
+    <jdbcConnection driverClass="${spring.datasource.druid.driver-class-name}"
+                    connectionURL="${spring.datasource.druid.url}"
+                    userId="${spring.datasource.druid.username}"
+                    password="${spring.datasource.druid.password}">
     </jdbcConnection>
 
     <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
@@ -63,7 +74,7 @@
     <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.mmall.dao" targetProject=".\src\main\java">-->
     <javaClientGenerator type="XMLMAPPER" targetPackage="com.xkcoding.orm.mybatis.dao" targetProject="./src/main/java">
       <!-- enableSubPackages:是否让schema作为包的后缀 -->
-      <property name="enableSubPackages" value="false" />
+      <property name="enableSubPackages" value="false"/>
     </javaClientGenerator>
 
     <!--生成的表-->

@@ -34,3 +34,5 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mappers/*.xml
   type-aliases-package: com.xkcoding.orm.mybatis.entity
+  jdbc:
+    jar: D:/java_jar_lib/mysql-connector-java-8.0.21.jar
