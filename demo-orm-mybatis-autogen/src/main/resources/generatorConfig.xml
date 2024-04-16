@@ -36,6 +36,8 @@
                     connectionURL="${spring.datasource.druid.url}"
                     userId="${spring.datasource.druid.username}"
                     password="${spring.datasource.druid.password}">
+      <!--高版本的 mysql-connector-java 需要设置 nullCatalogMeansCurrent=true-->
+      <property name="nullCatalogMeansCurrent" value="true"/>
     </jdbcConnection>
 
     <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
@@ -61,8 +63,12 @@
 
     <!--mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
     <!--<sqlMapGenerator targetPackage="mappers" targetProject=".\src\main\resources">-->
-    <sqlMapGenerator targetPackage="mybatis/mappers" targetProject="./src/main/resources">
+    <!--<sqlMapGenerator targetPackage="mybatis/mappers" targetProject="./src/main/resources">
       <property name="enableSubPackages" value="false"/>
+    </sqlMapGenerator>-->
+    <!-- 生成Mapper.xml文件 -->
+    <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+      <!--<property name="enableSubPackages" value="false"/>-->
     </sqlMapGenerator>
 
     <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
@@ -72,9 +78,9 @@
     -->
     <!-- targetPackage：mapper接口dao生成的位置 -->
     <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.mmall.dao" targetProject=".\src\main\java">-->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.xkcoding.orm.mybatis.dao" targetProject="./src/main/java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.xkcoding.orm.mybatis.mapper" targetProject="./src/main/java">
       <!-- enableSubPackages:是否让schema作为包的后缀 -->
-      <property name="enableSubPackages" value="false"/>
+      <!--<property name="enableSubPackages" value="false"/>-->
     </javaClientGenerator>
 
     <!--生成的表-->
@@ -87,7 +93,7 @@
     <!--enableDeleteByExample（默认true）：MyBatis3Simple为false，指定是否生成动态删除语句；-->
     <!--enableCountByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询总条数语句（用于分页的总条数查询）；-->
     <!--enableUpdateByExample（默认true）：MyBatis3Simple为false，指定是否生成动态修改语句（只修改对象中不为空的属性）；-->
-    <table tableName="agent" domainObjectName="Agent"
+    <table tableName="orm_user" domainObjectName="OrmUser"
            enableCountByExample="false"
            enableUpdateByExample="false"
            enableDeleteByExample="false"
