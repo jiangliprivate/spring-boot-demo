@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Data
 @ConfigurationProperties(prefix = "developer")
 @Component
-public class DeveloperProperty {
+public class Developer1Property {
     private String name;
     private String website;
     private String qq;

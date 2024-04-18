@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
  * @author yangkai.shen
  * @date Created in 2018-09-29 10:50
  */
-@Data
+@Data // ==  @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode.属于包org.projectlombok:lombok
 @Component
-public class ApplicationProperty {
+public class Application1Property {
     @Value("${application.name}")
     private String name;
     @Value("${application.version}")
