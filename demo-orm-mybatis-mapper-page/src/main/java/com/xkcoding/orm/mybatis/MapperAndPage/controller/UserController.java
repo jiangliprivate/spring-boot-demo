@@ -39,7 +39,7 @@ public class UserController {
         return Dict.create().set("code", delete== 1  ? 200 : 500).set("msg", delete== 1  ? "成功" : "失败");
     }
 
-   /* @PutMapping("/user/{id}")
+    /*@PutMapping("/user/{id}")
     public Dict update(@RequestBody User user, @PathVariable Long id) {
         Boolean update = userService.update(user, id);
         return Dict.create().set("code", update ? 200 : 500).set("msg", update ? "成功" : "失败").set("data", update ? user : null);
