@@ -29,7 +29,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloworldApplication {
 
     public static void main(String[] args) {
+        System.out.println("start Hello, World!");
         SpringApplication.run(HelloworldApplication.class, args);
+        System.out.println("end Hello, World!");
     }
 
     /**

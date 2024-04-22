@@ -40,10 +40,13 @@
       <property name="nullCatalogMeansCurrent" value="true"/>
     </jdbcConnection>
 
+    <!-- 生成类型指定替换 -->
+    <javaTypeResolver type="com.xkcoding.orm.mybatis.generator.TypeConvertGenerator"/>
+
     <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
-    <javaTypeResolver>
+    <!--<javaTypeResolver>
       <property name="forceBigDecimals" value="false"/>
-    </javaTypeResolver>
+    </javaTypeResolver>-->
 
     <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
         targetPackage     指定生成的model生成所在的包名
