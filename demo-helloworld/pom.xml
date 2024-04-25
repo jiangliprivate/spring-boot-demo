@@ -70,6 +70,7 @@
 
   <build>
     <finalName>demo-helloworld</finalName>
+    <!--配置build时相关的资源-->
     <resources>
       <resource>
         <directory>${package.environment}/</directory>
