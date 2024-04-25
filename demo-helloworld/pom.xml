@@ -20,6 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
   </properties>
 
   <dependencies>
@@ -40,13 +41,81 @@
     </dependency>
   </dependencies>
 
+  <!--environment begin-->
+  <profiles>
+    <!-- 测试 -->
+    <profile>
+      <id>test</id>
+      <properties>
+        <package.environment>profiles/test</package.environment>
+      </properties>
+    </profile>
+    <!-- UAT 测试 -->
+    <profile>
+      <id>uat</id>
+      <properties>
+        <package.environment>profiles/uat</package.environment>
+      </properties>
+    </profile>
+    <!-- 生产 -->
+    <profile>
+      <id>prd</id>
+      <properties>
+        <package.environment>profiles/prd</package.environment>
+      </properties>
+    </profile>
+
+  </profiles>
+  <!--environment end-->
+
   <build>
     <finalName>demo-helloworld</finalName>
+    <resources>
+      <resource>
+        <directory>${package.environment}/</directory>
+        <filtering>true</filtering>
+        <targetPath>${project.build.outputDirectory}</targetPath>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.yml</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <!--有了这个插件就可以在shell中通过命名启动项目 mvn spring-boot:run-->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.0.0.RELEASE</version>
+        <configuration>
+          <mainClass>com.xkcoding.helloworld.HelloworldApplication</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+            <configuration>
+              <classifier>exec</classifier>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--有些项目不需要,暂时不知道原因,版本不一致?-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.18.1</version>
+        <configuration>
+          <skipTests>true</skipTests>
+        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -1,0 +1,6 @@
+# 用,分割,末尾没有点哈
+server:
+  port: 8080
+  servlet:
+    context-path: /test
+  additionalPorts: 8081,2022
