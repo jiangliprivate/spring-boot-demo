@@ -20,6 +20,7 @@ import java.util.List;
 @RestController
 @Slf4j
 public class UserController {
+    //Mapper是可以自动注入的
     private final UserMapper userService;
 
     @Autowired
